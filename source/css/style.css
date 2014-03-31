@@ -168,15 +168,15 @@ body {
   background: white;
   font: 100%/1.5 "HelveticaNeue", "Helvetica", "Arial", sans-serif;
   -webkit-text-size-adjust: 100%;
-  color: #333333; }
+  color: #999999; }
 
 /* Links */
 a {
-  color: #333333;
+  color: #999999;
   text-decoration: none;
   outline: 0; }
   a:hover, a:focus {
-    color: gray; }
+    color: #43484b; }
 
 /* Headings */
 /*Further Reading: http:/csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/ */
@@ -201,8 +201,8 @@ p {
 /* Blockquote */
 blockquote {
   font-style: italic;
-  border-left: 1px solid gray;
-  color: gray;
+  border-left: 1px solid #43484b;
+  color: #43484b;
   padding-left: 1em;
   margin-bottom: 1em; }
 
@@ -210,11 +210,11 @@ blockquote {
 hr {
   border: 0;
   height: 2px;
-  background: #eeeeee;
+  background: #cccccc;
   margin: 2em 0; }
 
 abbr {
-  border-bottom: 1px dotted gray;
+  border-bottom: 1px dotted #43484b;
   cursor: help; }
 
 ol, ul {
@@ -275,7 +275,7 @@ button, input, select, textarea {
 
 input, textarea {
   width: 100%;
-  border: 1px solid gray;
+  border: 1px solid #43484b;
   padding: 0.5em 0.65rem; }
 
 input[type=text], input[type=search], input[type=url], input[type=number], textarea {
@@ -283,8 +283,8 @@ input[type=text], input[type=search], input[type=url], input[type=number], texta
 
 button, input[type="submit"] {
   padding: 0.5em;
-  background: #333333;
-  border: 1px solid gray;
+  background: #999999;
+  border: 1px solid #43484b;
   cursor: pointer; }
 
 input[type="checkbox"],
@@ -308,14 +308,14 @@ input[type="search"]::-webkit-search-decoration {
 .inline-form input[type=submit], .inline-form button, .inline-form .btn {
   font-size: 0.875em;
   padding: 0.65rem 1.3rem;
-  background: #333333;
+  background: #999999;
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
   width: auto; }
   .inline-form input[type=submit]:hover, .inline-form input[type=submit]:focus, .inline-form button:hover, .inline-form button:focus, .inline-form .btn:hover, .inline-form .btn:focus {
-    background: gray;
+    background: #43484b;
     color: white; }
 
 /* Validation */
@@ -336,8 +336,8 @@ input[type="search"]::-webkit-search-decoration {
   background: none;
   padding: 0.78em 1em;
   border: 0;
-  border-left: 1px solid gray;
-  color: gray; }
+  border-left: 1px solid #43484b;
+  color: #43484b; }
 
 /*------------------------------------*\
     $Table
@@ -345,16 +345,16 @@ input[type="search"]::-webkit-search-decoration {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  border: 1px solid gray;
+  border: 1px solid #43484b;
   width: 100%; }
 
 th {
   text-align: left;
-  border: 1px solid gray;
+  border: 1px solid #43484b;
   padding: 0.2em; }
 
 td {
-  border: 1px solid gray;
+  border: 1px solid #43484b;
   padding: 0.2em; }
 
 .animate-fade {
@@ -549,15 +549,30 @@ td {
 .header {
   background: white;
   padding: 0;
-  border-bottom: 1px solid #dbdbdb; }
+  border-bottom: 1px solid #dbdbdb;
+  position: relative; }
 
 .logo {
   float: left;
-  max-width: 8rem;
-  margin: 0.4rem; }
-  @media all and (min-width: 46.8em) {
+  max-width: 20rem;
+  margin: .8rem .4rem .4rem; }
+  @media all and (max-width: 46.8em) {
     .logo {
-      max-width: 9rem; } }
+      max-width: 16rem;
+      margin-bottom: 0; } }
+
+.tagline {
+  position: absolute;
+  right: 0;
+  top: .8rem;
+  font-size: .7em;
+  color: #bcbcbc; }
+  @media all and (max-width: 46.8em) {
+    .tagline {
+      position: relative;
+      font-size: .9rem;
+      float: left;
+      margin: .4rem; } }
 
 .nav-toggle {
   float: right;
@@ -590,10 +605,12 @@ td {
   clear: both;
   overflow: hidden;
   max-height: 0; }
+  .nav .nav-list {
+    margin-top: 1.5em; }
   .nav a {
     display: block;
     padding: 1em;
-    border-top: 1px solid #eeeeee; }
+    border-top: 1px solid #cccccc; }
   .nav.active {
     max-height: 40em; }
   @media all and (min-width: 46.8em) {
@@ -610,7 +627,7 @@ td {
   overflow: hidden; }
   .pagination li {
     float: left;
-    border-right: 1px solid #eeeeee; }
+    border-right: 1px solid #cccccc; }
     .pagination li:last-child {
       border: 0; }
   .pagination a {
@@ -629,16 +646,16 @@ td {
 .footer {
   clear: both;
   overflow: hidden;
-  background: #131313;
+  background: #999999;
   color: white;
   line-height: 1.2; }
   .footer a {
-    color: #f9f9f9; }
+    color: #bcbcbc; }
 
 .nav-footer {
   margin: -1em -1em 1em; }
   .nav-footer li {
-    border-bottom: 1px solid #333333; }
+    border-bottom: 1px solid #999999; }
     @media all and (min-width: 46.8em) {
       .nav-footer li {
         border: 0;
@@ -790,7 +807,7 @@ td {
 
 .icon-play-box:before {
   padding: 0.25em;
-  background: gray;
+  background: #43484b;
   color: white;
   margin-left: -1.7rem;
   margin-right: 0.5em; }
@@ -800,7 +817,7 @@ td {
 \*------------------------------------*/
 .btn {
   display: inline-block;
-  background: #333333;
+  background: #999999;
   color: white;
   line-height: 1;
   font-weight: bold;
@@ -808,11 +825,11 @@ td {
   border: 0;
   text-align: center; }
   .btn:hover, .btn:focus {
-    background: gray;
+    background: #43484b;
     color: white; }
   .btn.disabled {
-    background: #eeeeee;
-    color: gray; }
+    background: #cccccc;
+    color: #43484b; }
 
 .btn-small {
   padding: 0.5em; }
@@ -820,7 +837,7 @@ td {
 .btn-large {
   padding: 0.5em;
   text-transform: uppercase;
-  background: gray;
+  background: #43484b;
   font-size: 1.4rem;
   font-weight: normal; }
 
@@ -833,7 +850,7 @@ td {
   padding: 2em;
   text-align: center;
   font-weight: bold;
-  border-bottom: 1px solid #eeeeee; }
+  border-bottom: 1px solid #cccccc; }
 
 /* Block */
 .block {
@@ -941,7 +958,7 @@ td {
     font-weight: normal; }
   .headline-list li {
     padding: 0.25em 0;
-    border-top: 1px solid #dddddd; }
+    border-top: 1px solid #cccccc; }
 
 /* Post List */
 .post-list li {
@@ -969,7 +986,7 @@ td {
     display: block; }
 
 .tooltip-link {
-  background: #f9f9f9; }
+  background: #bcbcbc; }
 
 .tooltip {
   display: none;
@@ -979,7 +996,7 @@ td {
   width: 18em;
   padding: 1em;
   background: white;
-  border: 1px solid gray;
+  border: 1px solid #43484b;
   box-shadow: 0.3em 0.3em 1em 0 rgba(0, 0, 0, 0.2); }
   .tooltip h2 {
     margin-top: 0; }
@@ -997,22 +1014,22 @@ td {
   margin-bottom: 1em; }
 
 .acc-handle {
-  background: #131313;
+  background: #999999;
   color: white;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-weight: bold;
   display: block;
   position: relative;
   padding: 0.5em;
-  border-bottom: 1px solid #dddddd; }
+  border-bottom: 1px solid #cccccc; }
   .acc-handle:after {
     content: "+";
     float: right; }
   .acc-handle:hover {
     color: white;
-    background: #333333; }
+    background: #999999; }
   .acc-handle.active {
-    background: #333333; }
+    background: #999999; }
     .acc-handle.active:after {
       content: "-"; }
 
@@ -1024,17 +1041,17 @@ td {
   .tabs li {
     display: table-cell;
     text-align: center;
-    border-right: 1px solid #dddddd; }
+    border-right: 1px solid #cccccc; }
     .tabs li:last-child {
       border-right: 0; }
   .tabs a {
     display: block;
     padding: 0.5em;
-    background: gray; }
+    background: #43484b; }
     .tabs a:hover, .tabs a:focus {
-      background: #dddddd; }
+      background: #cccccc; }
     .tabs a.active {
-      background: #333333;
+      background: #999999;
       color: white; }
 
 .section {
@@ -1058,12 +1075,12 @@ td {
     float: left;
     margin-right: 0.5em; }
   .social-share a {
-    background: #333333;
+    background: #999999;
     color: white;
     display: block;
     padding: 0.5em; }
     .social-share a:hover {
-      background: gray; }
+      background: #43484b; }
 
 .comments li {
   margin-bottom: 1em; }
@@ -1078,7 +1095,7 @@ td {
   width: 6.5em; }
   .comment-meta img {
     display: block;
-    border: 1px solid #eeeeee;
+    border: 1px solid #cccccc;
     margin-bottom: 0.5em; }
 
 .comment-name {
@@ -1094,8 +1111,8 @@ td {
   text-align: center;
   padding: 1em;
   margin-bottom: 0.5em;
-  border: 1px solid gray;
-  background: #f9f9f9; }
+  border: 1px solid #43484b;
+  background: #bcbcbc; }
 
 .alert-error {
   color: red;
