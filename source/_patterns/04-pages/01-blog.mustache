@@ -1,25 +1,23 @@
 <div class="page" id="page">
-	{{> organisms-header }}
-	<div role="main">
-		<h1 class="section-title">Our Outdoor Blog</h1>
-		<div class="l-two-col">
-			<div class="l-main">
-				<section class="section latest-posts">
-					
-					<ul class="post-list">
-						{{# latest-posts}}
-							<li>{{> molecules-media-block }}</li>
-						{{/ latest-posts}}
-					</ul>
-					<a href="#" class="text-btn">View more posts</a>
-				</section>
-				{{> molecules-pagination }}
-			</div><!--end l-main-->
+    {{> organisms-header }}
+    <div role="main" class="container">
 
-			<div class="l-sidebar">
-				{{> organisms-recent-tweets }}
-			</div><!--end l-sidebar-->
-		</div><!--end two-col-->
-	</div><!--End role=main-->
-	{{> organisms-footer }}
+        <div class="columns col17">
+
+
+            {{# latest-posts}}
+                <li>{{> molecules-media-block }}</li>
+            {{/ latest-posts}}
+
+            <a href="#" class="text-btn">View more posts</a>
+
+            {{> molecules-pagination }}
+        </div><!--end l-main-->
+
+        <div class="columns col6 prepend-1 last">
+            {{> organisms-sponsors }}
+        </div><!--end l-sidebar-->
+    </div><!--End role=main-->
+    {{> organisms-footer }}
 </div>
+

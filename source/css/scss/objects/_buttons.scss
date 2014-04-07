@@ -2,14 +2,17 @@
     $BUTTONS
 \*------------------------------------*/
 .btn {
+    @include transition(background,0.5s,ease-out);
 	display: inline-block;
-	background: $gray-dark;
+	background: $blue;
 	color: $white;
 	line-height: 1;
 	font-weight: bold;
 	padding: $pad;
 	border: 0;
+    border-radius: 3px;
 	text-align: center;
+
 	
 	&:hover, &:focus {
 		background: $gray;
@@ -29,7 +32,6 @@
 .btn-large {
 	padding: $pad-half;
 	text-transform: uppercase;
-	background: $gray;
 	font-size: 1.4rem;
 	font-weight: normal;
 }

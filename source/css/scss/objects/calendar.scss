@@ -1,0 +1,16 @@
+.date-container {
+  border: 1px solid $gray;
+  text-align: center;
+}
+.date-month {
+  color: $white;
+  display: block;
+  background-color: $blue;
+  border-bottom: 1px solid $gray-light;
+}
+
+.date-day {
+  display: block;
+  color: $gray;
+  padding: 5px 0;
+}

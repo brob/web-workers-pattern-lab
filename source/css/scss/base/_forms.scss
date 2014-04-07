@@ -27,18 +27,13 @@ input, textarea {
 	width: 100%;
 	border: 1px solid $gray;
 	padding: $pad-half 0.65rem;
+    margin-bottom: .5em;
 }
 
 input[type=text], input[type=search], input[type=url], input[type=number], textarea {
 	-webkit-appearance: none;
 }
 
-button, input[type="submit"] {
-	padding: $pad-half;
-	background: $gray-dark;
-	border: 1px solid $gray;
-	cursor: pointer;
-}
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -62,25 +57,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 .inline-form {
-	fieldset, .inline-container {
-		position: relative;
-	}
-	
-	input[type=submit], button, .btn {
-		font-size: $font-size-small-2;
-		padding: 0.65rem 1.3rem;
-		background: $gray-dark;
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: 1;
-		width: auto;
 
-		&:hover, &:focus {
-			background: $gray;
-			color: $white;
-		}
-	}
 }
 
 /* Validation */
@@ -103,9 +80,5 @@ input[type="search"]::-webkit-search-decoration {
 	padding-right: 3em;
 }
 .inline-form .search-submit {
-	background: none;
-	padding: 0.78em 1em;
-	border: 0;
-	border-left: 1px solid $gray;
-	color: $gray;
+
 }

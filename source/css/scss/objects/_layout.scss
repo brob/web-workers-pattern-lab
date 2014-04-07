@@ -1,288 +1,218 @@
-/*------------------------------------*\
-    $LAYOUT
-\*------------------------------------*/
+///* Table of Contents
+//==================================================
+//    #Base 950 Grid
+//    #Tablet (Portrait)
+//    #Mobile (Portrait)
+//    #Mobile (Landscape)
+//    #Clearing */
+//
+///* Font Sizes */
+///* Set body to font-size of 100%. 1em equals 16px  to convert px to em use the formula (font px size / 16) = #.#####em  */
+///* Set sizes in the responsive-site.css file*/
+///* Change body font-size % in the responsive-site.css file, as this is most likely to change on a per site basis */
 
-/* Layout Container */
-.lc {
-	max-width: $max-width;	
-	margin: 0 auto;
-	padding: $pad-half;
+///* #Base 950 Grid
+//== STRUCTURE: ========================
+//    * Page width:            950 px
+//    * Number of columns:     24
+//    * Column width:          30 px
+//    * Margin width:          10 px
+//======================================
+//
+//   By default, the grid is 950px wide, with 24 columns
+//   spanning 30px, and a 10px margin between columns.
+//
+//   If you need fewer or more columns, use this formula to calculate
+//   the new total width:
+//
+//   $total-width: ($num-columns * $columns-width) + ($margin-width * ($num-columns - 1 ));
+//*/
+
+
+$total-width: ($num-columns * $columns-width) + ($margin-width * ($num-columns - 1 ));
+
+
+.container {
+  width: $total-width;
+  position: relative;
+  z-index:0;
+  margin: 0 auto;
+  padding: 0;
+  width: $total-width;
+
+}
+.column, .columns {
+  display: inline;
+  float: left;
+  margin: 0 $margin-width 0 0;
+  // Nested Column Classes
+  &.last { margin-right: 0; }
 }
 
-/*------------------------------------*\
-    $TEMPLATES
-\*------------------------------------*/
+//base columns
+@for $i from 1 through $num-columns {
+  @if $i == 1 {
+    .col#{$i}.columns, col#{$i}.column { width: (($columns-width * $i) + (($i - 1) * $margin-width)) ; }
+  } @else {
+    .col#{$i}.columns { width: (($columns-width * $i) + (($i - 1) * $margin-width)) ; }
+  }
+}
 
-/* Two Column Layout */
-.l-two-col {
-	@extend .cf;
+.row {
+  @include clearfix();
+  margin-bottom: 20px;
+  // Lines for doing float right instead of left to allow for a varied breakpoint
+  &.reverse {
+    & > .column, & > .columns {
+      float:right;
+      &.first { margin-right: 0; }
+      &.last { margin:0 $margin-width 0 0; }
+    }
+  }
+} // End Row
 
-	.l-main {
-		@media all and (min-width: $bp-large) {
-			float: left;
-			width: 70%;
-			padding-right: $pad;
-		}
-	}
-	
-	.l-sidebar {
-		@media all and (max-width: $bp-large) {
-			clear: both;
-		}
+//appends
+@for $i from 1 through ($num-columns - 1) {
+  .append-#{$i} { padding-right: $columns-width * $i + $margin-width * $i; }
+}
+//prepends
+@for $i from 1 through ($num-columns - 1) {
+  .prepend-#{$i} { padding-left: $columns-width * $i + $margin-width * $i; }
+}
+//pulls
+@for $i from 1 through ($num-columns) {
+  .pull-#{$i} { margin-left: -($columns-width * $i + $margin-width * $i); }
+}
 
-		@media all and (min-width: $bp-large) {
-			float: left;
-			width: 30%;
-			padding: 0 0 0 $pad;
-		}
-	}
+#{$mobile-nav-container} {
+  display: none;
 }
 
 
-/*------------------------------------*\
-    $GRIDS
-\*------------------------------------*/
+//  /* #Tablet (Portrait)
+//  == STRUCTURE: ========================
+//   * Page width:            760 px
+//   * Number of columns:     24
+//   * Column width:          24 px
+//   * Margin width:          8 px
+//  ======================================
+//  By default, the grid is 760px wide, with 24 columns
+//  spanning 24px, and a 8px margin between columns.
+//  If you need fewer or more columns, use this formula to calculate
+//  the new total width:
+//
+//  Total width = (number_of_columns * column_width) - margin_width
+//  */
+//  /* Note: Design for a width of 768px */
+//  /* Max width is 949px + 15px for scroll bar width*/
 
-/* Grid Container */
-.g {
-	overflow: hidden;
-	margin: 0 (-$pad-half);
+$tablet-width: ($num-tablet-columns * $columns-tablet-width) + ($margin-tablet-width * ($num-tablet-columns - 1 ));
+
+@include rf-mid-breaker($nav-break, $tablet-break) {
+
+  .container {
+    width: $tablet-width;
+    .column, .columns {
+      margin: 0 $margin-tablet-width 0 0;
+
+      @for $i from 1 through $num-tablet-columns {
+        @if $i == 1 {
+          &.col#{$i}, &.col#{$i} & { width: ($columns-tablet-width * $i) + (($i - 1) * $margin-tablet-width );}
+        } @else {
+          &.col#{$i} { width: ($columns-tablet-width * $i) + (($i - 1) * $margin-tablet-width );}
+        }
+      }
+    }
+  }
+
+  //Spans
+  @for $i from 1 through $num-tablet-columns {
+    .span-#{$i} { width: ($columns-tablet-width * $i) + (($i - 1) * $margin-tablet-width ); }
+  }
+
+  //Appends
+  @for $i from 1 through ($num-tablet-columns - 1) {
+    .append-#{$i} { padding-right: $columns-tablet-width * $i + $margin-tablet-width * $i;  }
+  }
+
+  //Prepends
+  @for $i from 1 through ($num-tablet-columns - 1) {
+    .prepend-#{$i} { padding-left: $columns-tablet-width * $i + $margin-tablet-width * $i;  }
+  }
+
+  //Pulls
+  @for $i from 1 through ($num-tablet-columns) {
+    .pull-#{$i} { margin-left: -($columns-tablet-width * $i + $margin-tablet-width * $i); }
+  }
+
+  //Reverse
+  .row.reverse > .column.last 					{ margin:0 $margin-tablet-width 0 0}
+
 }
 
-/* Grid Item */
-.gi {
-	padding: $pad-half;
-	
-	img {
-		display: block;
-	}
+@include rf-break-smaller($nav-break) {
+  .container {
+    width: $phone-portrait-width;
+    &.columns, &.column, .columns, .column {
+      margin: 0 0 $margin-phone-width 0;
+      padding: 0;
+    }
+    [class*='col'] {
+      &.column, &.columns {
+        width: $phone-portrait-width;
+      }
+    }
+  }
 
-	@media all and (min-width: $bp-med) {
-		float: left;
-	}
+  .row {
+    &.reverse {
+      & > .colun.last & > coluns.last {
+        margin: 0 ($margin-phone-width / 2) 0 0;
+      }
+    }
+  }
+
+  #{$mobile-nav-container} {
+    display: block;
+  }
+
+  #{$main-nav} {
+    display: none;
+  }
+
 }
 
-/* Grid 1up */
-.g-1up {
-	.gi {
-		width: 100%;
-	}
+@include rf-mid-breaker($phone-break, $nav-break) {
+  .container {
+    width: $phone-landscape-width;
+    .column, .columns { margin: 0 0 $margin-phone-width 0; }
+    [class*='col'] {
+      &.column, &.columns {
+        width: $phone-landscape-width;
+      }
+    }
+  }
+
+  #{$mobile-nav-container} {
+    display: block;
+  }
+
+  #{$main-nav} {
+    display: none;
+  }
+
+  .scale-width-grid {
+    max-width: 100%;
+    height: auto;
+  }
+  .scale-width-grid-full {
+    width: 100%;
+    height: auto;
+  }
 }
-
-/* Grid 2up */
-.g-2up {
-	@media all and (min-width: $bp-med) {
-		> .gi {
-			float: left;
-			width: 50%;
-			
-			&:nth-of-type(odd) {
-				clear: left;
-			}
-		}
-	}
+.right {
+    float: right;
 }
-
-/* Grid Half (Always displayed side by side) */
-.g-half {
-	> .gi {
-		float: left;
-		width: 50%;
-		
-		&:nth-of-type(odd) {
-			clear: left;
-		}
-	}
-}
-
-/* Grid 3up */
-.g-3up {
-	@media all and (min-width: $bp-med) {
-		> .gi {
-			float: left;
-			width: 50%;
-			
-			&:nth-of-type(2n+1) {
-				clear: left;
-			}
-		}
-	}
-	
-	@media all and (min-width: $bp-large) {
-		> .gi {
-			width: 33.3333333%;
-			
-			&:nth-of-type(2n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(3n+1) {
-				clear: left;
-			}
-		}
-	}
-}
-
-/* Grid 4up */
-.g-4up {
-	@media all and (min-width: $bp-med) {
-		>.gi {
-			float: left;
-			width: 50%;
-			
-			&:nth-of-type(2n+1) {
-				clear: both;
-			}
-		}
-	}
-	
-	@media all and (min-width: $bp-large) {
-		>.gi {
-			width: 25%;
-			
-			&:nth-of-type(2n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(4n+1) {
-				clear: left;
-			}
-		}
-	}
-}
-
-/* Grid Quarter (Always displayed side by side) */
-.g-quarter {
-	> .gi {
-		float: left;
-		width: 24%;
-		
-		&:nth-of-type(4n+1) {
-			clear: left;
-		}
-	}
-}
-
-.g-max4 {
-
-	@media all and (min-width: $bp-small-2) {
-		>.gi {
-			float: left;
-			width: 50%;
-			
-			&:nth-of-type(2n+1) {
-				clear: both;
-			}
-		}
-	}
-
-	@media all and (min-width: $bp-small-3) {
-		>.gi {
-			width: 33.3333333%;
-			
-			&:nth-of-type(2n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(3n+1) {
-				clear: left;
-			}
-		}
-	}
-	
-	@media all and (min-width: $bp-large) {
-		>.gi {
-			width: 25%;
-			
-			&:nth-of-type(3n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(4n+1) {
-				clear: left;
-			}
-		}
-	}
-}
-
-/* Grid 5up */
-.g-max5 {
-
-	>.gi {
-		float: left;
-		width: 50%;
-		
-		&:nth-of-type(2n+1) {
-			clear: both;
-		}
-	}
-
-	@media all and (min-width: $bp-small-3) {
-		>.gi {
-			width: 33.3333333%;
-			
-			&:nth-of-type(2n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(3n+1) {
-				clear: left;
-			}
-		}
-	}
-	
-	@media all and (min-width: $bp-med) {
-		>.gi {
-			width: 25%;
-			
-			&:nth-of-type(3n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(4n+1) {
-				clear: left;
-			}
-		}
-	}
-
-	@media all and (min-width: $bp-med-2) {
-		>.gi {
-			width: 20%;
-			
-			&:nth-of-type(4n+1) {
-				clear: none;
-			}
-			
-			&:nth-of-type(5n+1) {
-				clear: left;
-			}
-		}
-	}
-}
-
-/* Grid 2/3 */
-.gi-2-3 {
-	@media all and (min-width: $bp-med) {
-		float: left;
-		width: 66.666666%;
-	}
-}
-
-.gi-1-3 {
-	@media all and (min-width: $bp-med) {
-		float: left;
-		width: 33.333333%;
-	}
-}
-
-/* Grid 4up block */
-.g-opposites {
-	.gi {
-		float: left;
-		
-		&:last-child {
-			float: right;
-			text-align: right;
-		}
-	}
+.container {
+  @include clearfix();
 }

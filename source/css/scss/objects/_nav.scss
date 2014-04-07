@@ -6,25 +6,30 @@
 	clear: both;
 	overflow: hidden;
 	max-height: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 
     .nav-list {
-        margin-top: 1.5em;
+
+      & a {
+        color: $gray;
+        display: block;
+        padding: $pad $pad $pad/2;
+        &:hover {
+          color: $blue;
+        }
+        &.active {
+        }
+      }
+
     }
 	
-	a {
-		display: block;
-		padding: $pad;
-		border-top: 1px solid $gray-light-2;
-	}
 
-	&.active {
-		max-height: 40em;
-	}
 
 	@media all and (min-width: $bp-med) {
 		max-height: none;
-		float: right;
-		clear: none;
+
 
 		li {
 			float: left;

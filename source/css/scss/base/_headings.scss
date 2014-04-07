@@ -29,3 +29,14 @@ h6, .zeta    {
 	font-family: $font-secondary;
 	font-weight: normal;
 }
+
+.blog-excerpt h2 {
+    margin-bottom: .4em;
+}
+.blog-excerpt h2 a {
+    color: $blue;
+
+    &:hover {
+      color: $gray;
+    }
+}

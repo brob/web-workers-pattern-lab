@@ -1,15 +1,16 @@
 .header {
-	background: $white;
+	background: $gray-light;
 	padding: 0;
 	border-bottom: 1px solid #dbdbdb;
 	@extend .lc;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .logo {
 	float: left;
 	max-width: 20rem;
-	margin: .8rem .4rem .4rem;
+	margin: 1em 0;
 
 	@media all and (max-width: $bp-med) {
 		max-width: 16rem;
@@ -21,7 +22,7 @@
     right: 0;
     top: .8rem;
     font-size: .7em;
-    color: $gray-light;
+    color: $blue;
 
     @media all and (max-width: $bp-med) {
         position: relative;
